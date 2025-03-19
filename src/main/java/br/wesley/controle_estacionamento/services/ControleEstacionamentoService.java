@@ -4,6 +4,8 @@ import br.wesley.controle_estacionamento.entity.ControleEstacionamentoEntity;
 import br.wesley.controle_estacionamento.repositories.ControleEstacionamentoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ControleEstacionamentoService {
 
@@ -13,9 +15,11 @@ public class ControleEstacionamentoService {
         this.controleEstacionamentoRepository = controleEstacionamentoRepository;
     }
 
-    public ControleEstacionamentoEntity salvar (ControleEstacionamentoEntity controleEstacionamentoEntity) {
+    public ControleEstacionamentoEntity salvar(ControleEstacionamentoEntity controleEstacionamentoEntity) {
         return controleEstacionamentoRepository.save(controleEstacionamentoEntity);
     }
 
-
+    public List<ControleEstacionamentoEntity> listarTudo() {
+        return controleEstacionamentoRepository.findAll();
+    }
 }

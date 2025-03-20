@@ -137,4 +137,20 @@ public class ControleEstacionamentoEntity implements Serializable {
     public void setTorre(String torre) {
         this.torre = torre;
     }
+
+    @Override
+    public String toString() {
+        return "ControleEstacionamentoEntity{" +
+                "id=" + id +
+                ", numeroDaVaga='" + numeroDaVaga + '\'' +
+                ", placaDoCarro='" + placaDoCarro + '\'' +
+                ", marcaDoCarro='" + marcaDoCarro + '\'' +
+                ", modeloDoCarro='" + modeloDoCarro + '\'' +
+                ", corDoCarro='" + corDoCarro + '\'' +
+                ", dataDeRegistro=" + dataDeRegistro +
+                ", nomeDoResponsavel='" + nomeDoResponsavel + '\'' +
+                ", apartamento='" + apartamento + '\'' +
+                ", torre='" + torre + '\'' +
+                '}';
+    }
 }

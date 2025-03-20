@@ -101,4 +101,18 @@ public class ControleEstacionamentoDTO {
     public void setTorre(String torre) {
         this.torre = torre;
     }
+
+    @Override
+    public String toString() {
+        return "ControleEstacionamentoDTO{" +
+                "numeroDaVaga='" + numeroDaVaga + '\'' +
+                ", placaDoCarro='" + placaDoCarro + '\'' +
+                ", marcaDoCarro='" + marcaDoCarro + '\'' +
+                ", modeloDoCarro='" + modeloDoCarro + '\'' +
+                ", corDoCarro='" + corDoCarro + '\'' +
+                ", nomeDoResponsavel='" + nomeDoResponsavel + '\'' +
+                ", apartamento='" + apartamento + '\'' +
+                ", torre='" + torre + '\'' +
+                '}';
+    }
 }

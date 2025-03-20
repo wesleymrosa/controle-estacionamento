@@ -1,34 +1,104 @@
 package br.wesley.controle_estacionamento.dtos;
 
-import br.wesley.controle_estacionamento.entity.ControleEstacionamentoEntity;
-
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
 
 public class ControleEstacionamentoDTO {
 
     private static final long serializable = 1L;
+    @NotBlank
     private String numeroDaVaga;
+    @NotBlank
     private String placaDoCarro;
+    @NotBlank
     private String marcaDoCarro;
+    @NotBlank
     private String modeloDoCarro;
+    @NotBlank
     private String corDoCarro;
-    private LocalDateTime dataDeRegistro;
+    @NotBlank
     private String nomeDoResponsavel;
+    @NotBlank
     private String apartamento;
+    @NotBlank
     private String torre;
 
     public ControleEstacionamentoDTO() {
     }
 
-    public ControleEstacionamentoDTO(ControleEstacionamentoEntity obj) {
-        this.numeroDaVaga = obj.getNumeroDaVaga();
-        this.placaDoCarro = obj.getPlacaDoCarro();
-        this.marcaDoCarro = obj.getMarcaDoCarro();
-        this.modeloDoCarro = obj.getModeloDoCarro();
-        this.corDoCarro = obj.getCorDoCarro();
-        this.dataDeRegistro = obj.getDataDeRegistro();
-        this.nomeDoResponsavel = obj.getNomeDoResponsavel();
-        this.apartamento = obj.getApartamento();
-        this.torre = obj.getTorre();
+    public ControleEstacionamentoDTO(String numeroDaVaga, String placaDoCarro, String marcaDoCarro,
+                                     String modeloDoCarro, String corDoCarro, String nomeDoResponsavel,
+                                     String apartamento, String torre) {
+        this.numeroDaVaga = numeroDaVaga;
+        this.placaDoCarro = placaDoCarro;
+        this.marcaDoCarro = marcaDoCarro;
+        this.modeloDoCarro = modeloDoCarro;
+        this.corDoCarro = corDoCarro;
+        this.nomeDoResponsavel = nomeDoResponsavel;
+        this.apartamento = apartamento;
+        this.torre = torre;
+    }
+
+    public String getNumeroDaVaga() {
+        return numeroDaVaga;
+    }
+
+    public void setNumeroDaVaga(String numeroDaVaga) {
+        this.numeroDaVaga = numeroDaVaga;
+    }
+
+    public String getPlacaDoCarro() {
+        return placaDoCarro;
+    }
+
+    public void setPlacaDoCarro(String placaDoCarro) {
+        this.placaDoCarro = placaDoCarro;
+    }
+
+    public String getMarcaDoCarro() {
+        return marcaDoCarro;
+    }
+
+    public void setMarcaDoCarro(String marcaDoCarro) {
+        this.marcaDoCarro = marcaDoCarro;
+    }
+
+    public String getModeloDoCarro() {
+        return modeloDoCarro;
+    }
+
+    public void setModeloDoCarro(String modeloDoCarro) {
+        this.modeloDoCarro = modeloDoCarro;
+    }
+
+    public String getCorDoCarro() {
+        return corDoCarro;
+    }
+
+    public void setCorDoCarro(String corDoCarro) {
+        this.corDoCarro = corDoCarro;
+    }
+
+    public String getNomeDoResponsavel() {
+        return nomeDoResponsavel;
+    }
+
+    public void setNomeDoResponsavel(String nomeDoResponsavel) {
+        this.nomeDoResponsavel = nomeDoResponsavel;
+    }
+
+    public String getApartamento() {
+        return apartamento;
+    }
+
+    public void setApartamento(String apartamento) {
+        this.apartamento = apartamento;
+    }
+
+    public String getTorre() {
+        return torre;
+    }
+
+    public void setTorre(String torre) {
+        this.torre = torre;
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "v1")
@@ -37,15 +38,17 @@ public class controleEstacionamentoController {
     public ResponseEntity<Object> salvar
             (@RequestBody @Valid ControleEstacionamentoDTO controleEstacionamentoDTO) {
         if (controleEstacionamentoService.existsByPlacaDoCarro(controleEstacionamentoDTO.getPlacaDoCarro())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: License Plate Car is already in use!");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Essa placa de carro já está em uso !");
         }
 
         if (controleEstacionamentoService.existsByNumeroDaVaga(controleEstacionamentoDTO.getNumeroDaVaga())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot is already in use!");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Essa vaga já está sendo usada !");
         }
 
-        if (controleEstacionamentoService.existsByApartamentoAndTorre(controleEstacionamentoDTO.getApartamento(), controleEstacionamentoDTO.getTorre())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
+        if (controleEstacionamentoService.existsByApartamentoAndTorre(controleEstacionamentoDTO.getApartamento(),
+                controleEstacionamentoDTO.getTorre())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Conflict: Vaga de estacionamento já registrada para este apartamento/bloco");
         }
 
 //        Essa abordagem era comum no passado e ainda pode ser utilizada atualmente.
@@ -56,6 +59,11 @@ public class controleEstacionamentoController {
         controleEstacionamentoEntity.setDataDeRegistro(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(controleEstacionamentoService
                 .salvar(controleEstacionamentoEntity));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ControleEstacionamentoEntity>> listarTodasAsVagas() {
+        return ResponseEntity.ok().body(controleEstacionamentoService.listarTudo());
     }
 
 }

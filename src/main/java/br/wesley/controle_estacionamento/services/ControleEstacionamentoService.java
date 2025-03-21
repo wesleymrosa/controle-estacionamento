@@ -30,7 +30,7 @@ public class ControleEstacionamentoService {
     }
 
     public boolean existsByApartamentoAndTorre(String apartamento, String torre) {
-        return controleEstacionamentoRepository.existsByApartamentoAndTorre(apartamento,torre);
+        return controleEstacionamentoRepository.existsByApartamentoAndTorre(apartamento, torre);
     }
 
     public List<ControleEstacionamentoEntity> listarTudo() {

@@ -21,6 +21,18 @@ public class ControleEstacionamentoService {
         return controleEstacionamentoRepository.save(controleEstacionamentoEntity);
     }
 
+    public boolean existsByPlacaDoCarro(String placaDoCarro) {
+        return controleEstacionamentoRepository.existsByPlacaDoCarro(placaDoCarro);
+    }
+
+    public boolean existsByNumeroDaVaga(String numeroDaVaga) {
+        return controleEstacionamentoRepository.existsByNumeroDaVaga(numeroDaVaga);
+    }
+
+    public boolean existsByApartamentoAndTorre(String apartamento, String torre) {
+        return controleEstacionamentoRepository.existsByApartamentoAndTorre(apartamento,torre);
+    }
+
     public List<ControleEstacionamentoEntity> listarTudo() {
         return controleEstacionamentoRepository.findAll();
     }

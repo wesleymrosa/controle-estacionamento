@@ -36,6 +36,18 @@ public class controleEstacionamentoController {
     @PostMapping
     public ResponseEntity<Object> salvar
             (@RequestBody @Valid ControleEstacionamentoDTO controleEstacionamentoDTO) {
+        if (controleEstacionamentoService.existsByPlacaDoCarro(controleEstacionamentoDTO.getPlacaDoCarro())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: License Plate Car is already in use!");
+        }
+
+        if (controleEstacionamentoService.existsByNumeroDaVaga(controleEstacionamentoDTO.getNumeroDaVaga())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot is already in use!");
+        }
+
+        if (controleEstacionamentoService.existsByApartamentoAndTorre(controleEstacionamentoDTO.getApartamento(), controleEstacionamentoDTO.getTorre())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
+        }
+
 //        Essa abordagem era comum no passado e ainda pode ser utilizada atualmente.
 //        ControleEstacionamentoEntity controleEstacionamentoEntity = new ControleEstacionamentoEntity();
         var controleEstacionamentoEntity = new ControleEstacionamentoEntity();

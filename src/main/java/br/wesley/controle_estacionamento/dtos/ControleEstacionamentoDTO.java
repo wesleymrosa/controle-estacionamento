@@ -3,7 +3,6 @@ package br.wesley.controle_estacionamento.dtos;
 import jakarta.validation.constraints.NotBlank;
 
 public class ControleEstacionamentoDTO {
-
     private static final long serializable = 1L;
     @NotBlank
     private String numeroDaVaga;

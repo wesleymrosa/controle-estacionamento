@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ControleEstacionamentoService {
@@ -35,5 +36,9 @@ public class ControleEstacionamentoService {
 
     public List<ControleEstacionamentoEntity> listarTudo() {
         return controleEstacionamentoRepository.findAll();
+    }
+
+    public Optional<ControleEstacionamentoEntity> findById(Long id) {
+        return controleEstacionamentoRepository.findById(id);
     }
 }

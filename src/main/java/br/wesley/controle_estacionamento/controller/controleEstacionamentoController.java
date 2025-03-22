@@ -4,8 +4,6 @@ import br.wesley.controle_estacionamento.dtos.ControleEstacionamentoDTO;
 import br.wesley.controle_estacionamento.entity.ControleEstacionamentoEntity;
 import br.wesley.controle_estacionamento.services.ControleEstacionamentoService;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,20 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "v1")
 public class controleEstacionamentoController {
-
     private final ControleEstacionamentoService controleEstacionamentoService;
-
-    private static final Logger log = LoggerFactory.getLogger(controleEstacionamentoController.class);
-
 
     public controleEstacionamentoController(ControleEstacionamentoService controleEstacionamentoService) {
         this.controleEstacionamentoService = controleEstacionamentoService;
     }
-
 
     @GetMapping(value = "/teste-da-api")
     public ResponseEntity<String> testeDaApi() {
@@ -50,7 +44,6 @@ public class controleEstacionamentoController {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Conflict: Vaga de estacionamento já registrada para este apartamento/bloco");
         }
-
 //        Essa abordagem era comum no passado e ainda pode ser utilizada atualmente.
 //        ControleEstacionamentoEntity controleEstacionamentoEntity = new ControleEstacionamentoEntity();
         var controleEstacionamentoEntity = new ControleEstacionamentoEntity();
@@ -60,13 +53,18 @@ public class controleEstacionamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(controleEstacionamentoService
                 .salvar(controleEstacionamentoEntity));
     }
-<<<<<<< Updated upstream
 
     @GetMapping
     public ResponseEntity<List<ControleEstacionamentoEntity>> listarTodasAsVagas() {
         return ResponseEntity.ok().body(controleEstacionamentoService.listarTudo());
     }
 
-=======
->>>>>>> Stashed changes
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "id") Long id) {
+        Optional<ControleEstacionamentoEntity> parkingSpotModelOptional = controleEstacionamentoService.findById(id);
+        if (!parkingSpotModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+    }
 }

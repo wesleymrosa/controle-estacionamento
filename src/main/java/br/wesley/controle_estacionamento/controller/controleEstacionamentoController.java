@@ -63,7 +63,7 @@ public class controleEstacionamentoController {
     public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "id") Long id) {
         Optional<ControleEstacionamentoEntity> parkingSpotModelOptional = controleEstacionamentoService.findById(id);
         if (!parkingSpotModelOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Essa vaga não foi encontrada ! ");
         }
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }

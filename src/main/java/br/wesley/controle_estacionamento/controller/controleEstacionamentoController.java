@@ -60,10 +60,13 @@ public class controleEstacionamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(controleEstacionamentoService
                 .salvar(controleEstacionamentoEntity));
     }
+<<<<<<< Updated upstream
 
     @GetMapping
     public ResponseEntity<List<ControleEstacionamentoEntity>> listarTodasAsVagas() {
         return ResponseEntity.ok().body(controleEstacionamentoService.listarTudo());
     }
 
+=======
+>>>>>>> Stashed changes
 }

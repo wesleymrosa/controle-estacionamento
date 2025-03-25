@@ -88,7 +88,7 @@ mvn spring-boot:run
 ```
 
 A aplicação será iniciada em:  
-[http://localhost:8080](http://localhost:8080)
+[http://localhost:8082](http://localhost:8082)
 
 ---
 
@@ -99,18 +99,18 @@ A aplicação será iniciada em:
 - Exemplo de requisição GET:
 
 ```
-GET http://localhost:8080/v1/1
+GET http://localhost:8082/v1/1
 ```
 
 ### Via Swagger UI
 
 - Acesse:  
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+[http://localhost:8082/swagger-ui.html](http://localhost:8082/swagger-ui.html)
 
 ### Via cURL
 
 ```bash
-curl -X GET http://localhost:8080/v1/1
+curl -X GET http://localhost:8082/v1/1
 ```
 
 ---

@@ -78,4 +78,26 @@ public class controleEstacionamentoController {
         return ResponseEntity.status(HttpStatus.OK).body("Vaga de estacionamento excluída com sucesso !");
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> atualizarVaga(@PathVariable(value = "id") Long id,
+                                                @RequestBody @Valid ControleEstacionamentoDTO controleEstacionamentoDTO) {
+        Optional<ControleEstacionamentoEntity> optional = controleEstacionamentoService.findById(id);
+        if (!optional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaga de estacionamento não encontrada !");
+        }
+
+        ControleEstacionamentoEntity controleEstacionamentoEntity = optional.get();
+
+        controleEstacionamentoEntity.setNumeroDaVaga(controleEstacionamentoDTO.getNumeroDaVaga());
+        controleEstacionamentoEntity.setPlacaDoCarro(controleEstacionamentoDTO.getPlacaDoCarro());
+        controleEstacionamentoEntity.setMarcaDoCarro(controleEstacionamentoDTO.getMarcaDoCarro());
+        controleEstacionamentoEntity.setModeloDoCarro(controleEstacionamentoDTO.getModeloDoCarro());
+        controleEstacionamentoEntity.setCorDoCarro(controleEstacionamentoDTO.getCorDoCarro());
+        controleEstacionamentoEntity.setNomeDoResponsavel(controleEstacionamentoDTO.getNomeDoResponsavel());
+        controleEstacionamentoEntity.setApartamento(controleEstacionamentoDTO.getApartamento());
+        controleEstacionamentoEntity.setTorre(controleEstacionamentoDTO.getTorre());
+
+        controleEstacionamentoService.salvar(controleEstacionamentoEntity);
+        return ResponseEntity.status(HttpStatus.OK).body("Vaga atualizada com sucesso.");
+    }
 }

@@ -60,7 +60,7 @@ public class controleEstacionamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Object> buscarPorId(@PathVariable(value = "id") Long id) {
         Optional<ControleEstacionamentoEntity> controleEstacionamentoOptional = controleEstacionamentoService.findById(id);
         if (!controleEstacionamentoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Essa vaga não foi encontrada ! ");
@@ -69,7 +69,7 @@ public class controleEstacionamentoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Object> deletarPorId(@PathVariable(value = "id") Long id) {
         Optional<ControleEstacionamentoEntity> parkingSpotModelOptional = controleEstacionamentoService.findById(id);
         if (!parkingSpotModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaga de estacionamento não encontrada !");

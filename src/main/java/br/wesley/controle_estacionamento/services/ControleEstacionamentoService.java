@@ -41,4 +41,8 @@ public class ControleEstacionamentoService {
     public Optional<ControleEstacionamentoEntity> findById(Long id) {
         return controleEstacionamentoRepository.findById(id);
     }
+
+    public void delete(ControleEstacionamentoEntity controleEstacionamentoEntity) {
+        controleEstacionamentoRepository.delete(controleEstacionamentoEntity);
+    }
 }
